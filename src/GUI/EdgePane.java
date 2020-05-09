@@ -169,10 +169,14 @@ public class EdgePane extends GridPane{
 	    	vFrom=FromChoice.getValue();
 	    	vTo=ToChoice.getValue();
 	    	
-	    	Edge <Building> e = new Edge<Building>(5,vFrom, vTo);
-	    	AddEdgeToGraph(e);
 	    	
-	    	System.out.println(e.toString());
+	    	//Edge <Building> e = new Edge<Building>(5, vFrom, vTo);
+	    	//Edge <Building> f = new Edge<Building>(0,vTo, vFrom);
+	    	AddEdgeToGraph();
+	    	//AddEdgeToGraph(f);
+	    	
+	    	//System.out.println(e.toString());
+	    	window.close();
 	    	
 	    });
 	    pane.add(lblFromChoice, 1, 1);
@@ -183,7 +187,7 @@ public class EdgePane extends GridPane{
 	
 		
 	}
-	public Graph<Building> AddEdgeToGraph(Edge<Building> edge)
+	public Graph<Building> AddEdgeToGraph()
 	{
 		Graph<Building> g = new Graph<Building>();
 		ArrayList<Graph<Building>> gList = new ArrayList<Graph<Building>>();
@@ -191,7 +195,7 @@ public class EdgePane extends GridPane{
 		System.out.println(gList.size());
 		for (Graph<Building> gs: gList)
 		{
-			gs.getEdges().add(edge);
+			gs.addVnE(vFrom, vTo, 3, 0);;
 			IOHandling.writeGraph(gs);
 		}
 		//IOHandling.writeGraph(gList);

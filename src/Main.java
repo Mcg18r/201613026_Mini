@@ -41,9 +41,9 @@ public class Main extends Application
     }
 
 	@Override
-	public void start(Stage primaryStage) throws Exception {	
-		
+	public void start(Stage primaryStage) throws Exception {
 		setUp();
+		
 		Stage window =primaryStage;
 		window.setTitle("2016113026	MiniProject");
 
@@ -167,8 +167,8 @@ public class Main extends Application
 		Vertex<Building> v9 = new Vertex<Building>(st5,intRandom(0, 2000));
 		g.getVertices().add(v9);
 		
-		g.addVnE(v0, v1, 2, 0);
-		g.addVnE(v0, v2, 3, 0);
+		g.addVnE(v0, v1, 3, 0);
+		g.addVnE(v0, v2, 2, 0);
 		g.addVnE(v3, v9, 2, 0);
 		g.addVnE(v1, v3, 2, 0);
 		g.addVnE(v1, v4, 3, 0);

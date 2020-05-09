@@ -219,6 +219,14 @@ public class VertexPane extends GridPane{
     		Vertex<Building> v=buildingToVertex(b, sb.getPowerUsed());
     		AddVertexToGraph(v);
     	}
+    	if(this.getChildren().contains(table))
+		{
+			table.refresh();
+		}else
+		{
+			add(table, 1, 0, 2, 1);
+		}
+    	window.close();
     });
     pane.add(HBtn, 1, 5);
 	return b;
@@ -353,6 +361,7 @@ public class VertexPane extends GridPane{
 			{
 				add(table, 1, 0, 2, 1);
 			}
+			window.close();
 		});
 		pane.add(lblBuildingType, 1, 1);
 		pane.add(solarB, 2, 1);
