@@ -281,8 +281,8 @@ public class ViewPane extends GridPane{
 		int Ypos= vertex.getValue().getYPosition();
 		String name= vertex.getValue().getName();
 		
-		Text t = new Text(Xpos-25,Ypos,name);
-		t.setFill(Color.WHITE);
+		Text t = new Text(Xpos-55,Ypos-55,name);
+		t.setFill(Color.BLACK);
 		return t;
 		
 	}

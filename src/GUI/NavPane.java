@@ -1,6 +1,5 @@
 package GUI;
 
-import Object.test;
 import Styles.backg;
 import Styles.button;
 import javafx.geometry.Pos;
@@ -29,8 +28,6 @@ public class NavPane extends GridPane
 	private Button btnEdge;
 	private Button btnBuilding;
 	private Button btnGraph;
-	private Button btnTest;
-	private Button btnDFS;
 	
 	private VBox gridBox= new VBox ();;
 	
@@ -58,12 +55,6 @@ public class NavPane extends GridPane
 			gridBox.getChildren().add(movPane);
 		});
 		
-		btnTest.setOnAction(e->{
-			
-			gridBox.getChildren().clear();
-			test movPane = new test();
-			gridBox.getChildren().add(movPane);
-		});
 		
 		//shows the list of vertices in the graph
 		btnVertex.setOnAction(e->{
@@ -87,12 +78,6 @@ public class NavPane extends GridPane
 			BuildingPane movPane = new BuildingPane ();
 			gridBox.getChildren().add(movPane);
 		});
-		btnDFS.setOnAction(e->{
-			
-			gridBox.getChildren().clear();
-			DFSPane movPane = new DFSPane ();
-			gridBox.getChildren().add(movPane);
-		});
 	}
 
 	private void setupGUI() 
@@ -103,11 +88,9 @@ public class NavPane extends GridPane
 		btnEdge = btn.btnSet(btnEdge,"VIEW EDGE'S","View the edge's in graph");
 		btnBuilding = btn.btnSet(btnBuilding,"VIEW BUILDING'S","View the buildings");
 		btnGraph = btn.btnSet(btnGraph,"VIEW GRAPH","View the graphs");
-		btnTest = btn.btnSet(btnTest,"Test","View the graphs");
-		btnDFS = btn.btnSet(btnDFS,"DFS TEST","View the graphs");
 		
 		VBox btnBox = new VBox ();
-		btnBox.getChildren().addAll(btnView, btnVertex, btnEdge,btnBuilding, btnGraph, btnTest, btnDFS);
+		btnBox.getChildren().addAll(btnView, btnVertex, btnEdge,btnBuilding, btnGraph);
 		gridBox.setAlignment(Pos.BOTTOM_CENTER);
 		
 		setHgap(10);
