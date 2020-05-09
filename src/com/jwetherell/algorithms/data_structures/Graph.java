@@ -192,7 +192,6 @@ public class Graph<T extends Comparable<T>> implements Serializable {
 		
 		v1.addEdge(e1);
 		v1.addEdge(e2);
-		
 		v2.addEdge(e1);
 		v2.addEdge(e2);
 		
