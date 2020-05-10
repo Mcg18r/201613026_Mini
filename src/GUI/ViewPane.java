@@ -16,6 +16,7 @@ import Object.Building;
 import Object.SolarBuilding;
 import Object.StandardBuilding;
 import Styles.Arrow;
+import Styles.backg;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -31,6 +32,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -80,6 +82,8 @@ public class ViewPane extends GridPane{
         
         contextMenu.getItems().addAll(menuAddVertex,menuAddEdge, menuCheapest);	//add the items to the menu
         
+        Background bg = backg.setBackground("file:src/Images/backgroundFile.jpg");
+		sp.setBackground(bg);
 		sp.setOnContextMenuRequested(a->{
 			//display on right click
 			spX=a.getScreenX();
@@ -142,6 +146,7 @@ public class ViewPane extends GridPane{
 				Alert alert = new Alert(AlertType.ERROR,"Please enter a valid choice");
 				alert.showAndWait();
 			}
+			
 			System.out.println(tempChoice);
 			
 		});
@@ -194,6 +199,7 @@ public class ViewPane extends GridPane{
 			alert.showAndWait();
 			
 		});
+		
 		/*-------------------------------------------------------------------------------*/
 		
 		/*--------------------READING DATA TO ARRAY LIST---------------------------------*/
@@ -205,10 +211,12 @@ public class ViewPane extends GridPane{
 		}
 		/*-------------------------------------------------------------------------------*/
 		
-		drawGraph();	
+		drawGraph();
+		
 		
 		/*------------------------ADD ROOT TO SCROLLPANE--------------------------------------*/
 		sp.setContent(root);										//add root to scroll Pane first
+		
 		Scene scene = new Scene(sp,800,800);						//add scroll Pane to the scene
 		drawWindow.setScene(scene);									//add scene to window
 		drawWindow.show();											//show window	
@@ -386,6 +394,8 @@ public class ViewPane extends GridPane{
 			Group a = new Group ();
 			a = drawArrowEdge(e);
 			root.getChildren().add(a);
+			Background bg = backg.setBackground("file:src/Images/backgroundFile.jpg");
+			
 		}
 	}
 
@@ -549,6 +559,8 @@ public class ViewPane extends GridPane{
 			}
 			window.close();
 		});
+		Background bg = backg.setBackground("file:src/Images/backgroundFile.jpg");
+		pane.setBackground(bg);
 		pane.add(lblBuildingType, 1, 1);
 		pane.add(solarB, 2, 1);
 
@@ -650,6 +662,8 @@ public class ViewPane extends GridPane{
 	    	window.close();
 	    	
 	    });
+	    Background bg = backg.setBackground("file:src/Images/backgroundFile.jpg");
+		pane.setBackground(bg);
 	    pane.add(lblFromChoice, 1, 1);
 	    pane.add(FromChoice, 2, 1);
 	    pane.add(lblToChoice, 1, 2);

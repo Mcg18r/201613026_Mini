@@ -11,6 +11,7 @@ import FileHandling.StringHandling;
 import Object.Building;
 import Object.SolarBuilding;
 import Object.StandardBuilding;
+import Styles.backg;
 import Styles.button;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,6 +29,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -133,6 +135,7 @@ public class VertexPane extends GridPane{
 			add(table, 1, 0, 2, 1);
 		}
 		add(btnAddVertex,1,1,2,1);
+			
 	}
 	
 	/**
@@ -220,6 +223,7 @@ public class VertexPane extends GridPane{
     
     ChoiceBox<Building> choice = new ChoiceBox<Building>(dataBuildings);
     pane.add(choice, 3, 1);
+    
 
     
     btnOk.setOnAction(i->{
@@ -250,6 +254,8 @@ public class VertexPane extends GridPane{
     	window.close();
     });
     pane.add(HBtn, 1, 5);
+    Background bg = backg.setBackground("file:src/Images/backgroundFile.jpg");
+	pane.setBackground(bg);
 	return b;
 }
 	
@@ -388,6 +394,8 @@ public class VertexPane extends GridPane{
 			}
 			window.close();
 		});
+		Background bg = backg.setBackground("file:src/Images/backgroundFile.jpg");
+		pane.setBackground(bg);
 		pane.add(lblBuildingType, 1, 1);
 		pane.add(solarB, 2, 1);
 
