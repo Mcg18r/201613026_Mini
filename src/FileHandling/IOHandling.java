@@ -15,6 +15,10 @@ import com.jwetherell.algorithms.data_structures.Graph.Vertex;
 
 import Object.Building;
 
+/**
+ * @author 201613026
+ *A Class to handling all my database files
+ */
 public class IOHandling {
 
 	/**

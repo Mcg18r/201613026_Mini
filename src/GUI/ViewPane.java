@@ -32,7 +32,7 @@ import javafx.stage.Stage;
 
 /**
  * @author 201613026
- *
+ *Class for View Pane 
  */
 public class ViewPane extends GridPane{
 	/*---------------------- DECLARATIONS--------------------------------------------*/
@@ -46,6 +46,9 @@ public class ViewPane extends GridPane{
 	List<Edge<Building>> eList;								//eList used to store the edges 
 	/*-------------------------------------------------------------------------------*/
 	
+	/**
+	 * View Pane class
+	 */
 	public ViewPane() {
 		
 		/*---------------------- SETUP MENU FOR RIGHT CLICK-----------------------------*/
@@ -67,7 +70,7 @@ public class ViewPane extends GridPane{
 			System.out.println("root Vertex "+vList.get(1));
 			System.out.println("end Vertex "+vList.get(5));
 			
-			Stack<Node> nodeStack=NodeSet(vList.get(0), vList.get(5));
+			Stack<Node> nodeStack=NodeSet(vList.get(0));
 			Node node = new Node();
 			while(!nodeStack.isEmpty())
 			{
@@ -113,6 +116,13 @@ public class ViewPane extends GridPane{
 		/*-------------------------------------------------------------------------------*/
 	
 	}
+	
+	/**
+	 * function to draw a circle
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public Circle drawCircle(int x, int y)
 	{
         
@@ -126,6 +136,10 @@ public class ViewPane extends GridPane{
 	
 	/**
 	 * Function that takes in a vertex and returns a circle
+	 * @param vertex
+	 * @return
+	 */
+	/**
 	 * @param vertex
 	 * @return
 	 */
@@ -164,6 +178,10 @@ public class ViewPane extends GridPane{
 	 * @param edge
 	 * @return
 	 */
+	/**
+	 * @param edge
+	 * @return
+	 */
 	public Line drawLineEdge(Edge<Building> edge)
 	{
 		Line line = new Line(edge.getFromVertex().getValue().getXPosition(), edge.getFromVertex().getValue().getYPosition(), 
@@ -174,6 +192,10 @@ public class ViewPane extends GridPane{
 	
 	/**
 	 * Function that takes in a edge and returns an arrow between Vertices
+	 * @param edge
+	 * @return
+	 */
+	/**
 	 * @param edge
 	 * @return
 	 */
@@ -266,15 +288,26 @@ public class ViewPane extends GridPane{
 		}
 	}
 
+	/**
+	 * function to return a stack from my Nodes class
+	 * @param root
+	 * @return
+	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public  Stack<Node> NodeSet(Vertex<Building> root, Vertex<Building> end)
+	public  Stack<Node> NodeSet(Vertex<Building> root)
 	{
 		Nodes Nodes = new Nodes();
-		Stack<Node> nodeStack = Nodes.nodeAlgorythm(root, end);
+		Stack<Node> nodeStack = Nodes.nodeAlgorythm(root);
 		return nodeStack;
 		
 		
 	}
+	
+	/**
+	 * function to set Text of vertex
+	 * @param vertex
+	 * @return
+	 */
 	public Text SetText(Vertex<Building> vertex)
 	{
 		int Xpos= vertex.getValue().getXPosition();

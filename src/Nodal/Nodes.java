@@ -15,22 +15,43 @@ import com.jwetherell.algorithms.data_structures.Graph.Vertex;
 import Object.Building;
 
 
+/**
+ * class to deal with my search
+ * @author 201613026
+ * @param <T>
+ */
+@SuppressWarnings("unused")
 public class Nodes<T extends Comparable<T>> {
 
+	
 	private Vertex<T> root;
 	private Vertex<T> end;
+	
+	/**
+	 * constructor for nodes class
+	 * @param root
+	 * @param end
+	 */
 	public Nodes (Vertex<T> root, Vertex<T> end)
 	{
 		this.root=root;
 		this.end=end;
 	}
 	
+	/**
+	 * default constructor for nodes class
+	 */
 	public Nodes()
 	{
 		root=null;
 		end=null;
 	}
-	public Stack<T> nodeAlgorythm (Vertex<T> root, Vertex<T> end)
+	
+	/**function for search algorithm
+	 * @param root
+	 * @return
+	 */
+	public Stack<T> nodeAlgorythm (Vertex<T> root)
 	{
 		boolean isContinue =true;
 		List<Node<T>> nodeList = new ArrayList<Node<T>>();

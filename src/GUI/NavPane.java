@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 
 /**
  * @author 201613026
- *
+ *A class that handles the navigationg GUI
  */
 public class NavPane extends GridPane 
 {
@@ -33,12 +33,18 @@ public class NavPane extends GridPane
 	
 	Stage window;
 
+	/**
+	 * default load for NavigationPane
+	 * @param window
+	 */
 	public NavPane(Stage window) {	
 		this.window = window;
 		setupGUI();
 	}
 
-	//A METHOD THAT HOLDS THE SETTING UP OF ALL THE BUTTONS
+	/**
+	 * A METHOD THAT HOLDS THE SETTING UP OF ALL THE BUTTONS
+	 */
 	private void buttonFunctions() {
 		//shows the graph view
 		btnView.setOnAction(e->{
@@ -80,6 +86,9 @@ public class NavPane extends GridPane
 		});
 	}
 
+	/**
+	 * GUI setup for the navigation pane
+	 */
 	private void setupGUI() 
 	{
 		button btn = new button();

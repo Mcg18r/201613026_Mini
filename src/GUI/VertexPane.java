@@ -36,6 +36,10 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * @author 201613026
+ *Vertex Pane class
+ */
 public class VertexPane extends GridPane{
 
 	private Button btnAddVertex;
@@ -52,6 +56,9 @@ public class VertexPane extends GridPane{
 	@SuppressWarnings("unused")
 	private ObservableList<Building> dataBuildings;
 	
+	/**
+	 * vertex class load
+	 */
 	public VertexPane() {
 		// TODO Auto-generated constructor stub() {
 		tableLoad();
@@ -99,6 +106,9 @@ public class VertexPane extends GridPane{
 		});
 	}
 	
+	/**
+	 * setup GUI for vertex pane
+	 */
 	public void setupGUI()
 	{
 		button btn = new button();
@@ -125,6 +135,9 @@ public class VertexPane extends GridPane{
 		add(btnAddVertex,1,1,2,1);
 	}
 	
+	/**
+	 * load vertex data for table
+	 */
 	@SuppressWarnings("unchecked")
 	public void tableLoad()
 	{
@@ -161,6 +174,9 @@ public class VertexPane extends GridPane{
 		table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 	}
 	
+	/**
+	 * function to get buildings from file
+	 */
 	public void getBuildings()
 	{
 		ArrayList<Building> building = new ArrayList<Building>();
@@ -174,6 +190,11 @@ public class VertexPane extends GridPane{
 		dataBuildings = FXCollections.observableList(building);
 	}
 	
+	/**
+	 * function to choose building from file
+	 * @param window
+	 * @return
+	 */
 	public Building ChooseBuildingFromFile(Stage window)
 	{
 		b = new Building ();
@@ -232,6 +253,10 @@ public class VertexPane extends GridPane{
 	return b;
 }
 	
+	/**
+	 * function to create new building and make a vertex
+	 * @param window
+	 */
 	public void addNewBuilding(Stage window)
 	{
 		GridPane pane = new GridPane();
@@ -383,12 +408,23 @@ public class VertexPane extends GridPane{
 		pane.add(HBtn, 1, 7);
 	}
 
+	/**
+	 * function to create vertex from building
+	 * @param build
+	 * @param weight
+	 * @return
+	 */
 	public Vertex<Building> buildingToVertex(Building build, int weight)
 	{
 		Vertex<Building> v0 = new Vertex<Building>(build,weight);
 		return v0;
 	}
 	
+	/**
+	 * function to add vertex to graph file
+	 * @param vertex
+	 * @return
+	 */
 	public Graph<Building> AddVertexToGraph(Vertex<Building> vertex)
 	{
 		Graph<Building> g = new Graph<Building>();

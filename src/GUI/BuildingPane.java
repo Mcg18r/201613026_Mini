@@ -43,6 +43,9 @@ public class BuildingPane extends GridPane{
 	private TableView<Building> table = new TableView<Building>();
 	private ObservableList<Building> data;
 	
+	/**
+	 * the default load for pane
+	 */
 	public BuildingPane() {
 		tableLoad();
 		setupGUI();
@@ -77,10 +80,7 @@ public class BuildingPane extends GridPane{
 			window.show();
 
 			CheckBox solarB = new CheckBox();
-			//solarB.setSelected(true);
 			Label lblBuildingType = new Label("BuildingType: ");
-			//ChoiceBox<String> c = new ChoiceBox<String>();
-			//c.getItems().addAll(choices);
 
 			Button btnOk = new Button("Generate Building");
 			HBox HBtn = new HBox(10);
@@ -196,6 +196,12 @@ public class BuildingPane extends GridPane{
 			pane.add(actionTarget, 1, 8);
 		});
 	}
+	/**
+	 * 
+	 */
+	/**
+	 * 
+	 */
 	public void setupGUI()
 	{
 		button btn = new button();
@@ -222,6 +228,9 @@ public class BuildingPane extends GridPane{
 
 		add(btnAddBuilding,1,1,2,1);
 	}
+	/**
+	 * Loads the table from the graph file
+	 */
 	@SuppressWarnings("unchecked")
 	public void tableLoad()
 	{
@@ -237,7 +246,6 @@ public class BuildingPane extends GridPane{
 		data = FXCollections.observableList(building);
 		table.setItems(data);
 
-		//ObservableList<Barcode> data = FXCollections.observableArrayList(Barcode.get(0));
 		TableColumn<Building, String> nameCol = new TableColumn<Building, String>("name");
 		nameCol.setCellValueFactory(new PropertyValueFactory<Building, String>("name"));
 		

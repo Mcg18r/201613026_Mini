@@ -38,6 +38,10 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * @author 201613026
+ *Edge Pane class
+ */
 public class EdgePane extends GridPane{
 
 	ArrayList<Edge<Building>> eTest=new ArrayList<Edge<Building>>();
@@ -54,6 +58,9 @@ public class EdgePane extends GridPane{
 	private int tempChoice;
 	
 	
+	/**
+	 * 
+	 */
 	public EdgePane() {
 		tableLoad();
 		setupGUI();
@@ -103,10 +110,18 @@ public class EdgePane extends GridPane{
 		});
 	}
 	
+	/**
+	 * add a new vertex to file
+	 * @param window
+	 */
 	private void addNewVertex(Stage window) {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	/**
+	 * get a list of vertices from graph
+	 */
 	public void getVertex()
 	{
 		List<Vertex<Building>>v = null;
@@ -120,6 +135,10 @@ public class EdgePane extends GridPane{
 		dataVertices = FXCollections.observableList(v);
 	}
 
+	/**
+	 * choose vertex from a list of created vertices
+	 * @param window
+	 */
 	private void ChooseVetexFromFile(Stage window) 
 	{
 		getVertex();
@@ -170,9 +189,9 @@ public class EdgePane extends GridPane{
 	    	vTo=ToChoice.getValue();
 	    	
 	    	
-	    	//Edge <Building> e = new Edge<Building>(5, vFrom, vTo);
+	    	Edge <Building> e = new Edge<Building>(5, vFrom, vTo);
 	    	//Edge <Building> f = new Edge<Building>(0,vTo, vFrom);
-	    	AddEdgeToGraph();
+	    	AddEdgeToGraph(vFrom, vTo);
 	    	//AddEdgeToGraph(f);
 	    	
 	    	//System.out.println(e.toString());
@@ -187,21 +206,73 @@ public class EdgePane extends GridPane{
 	
 		
 	}
-	public Graph<Building> AddEdgeToGraph()
+	
+	/**
+	 * add the selected vertex to graph
+	 * @param vFrom
+	 * @param vTo
+	 */
+	public void AddEdgeToGraph(Vertex<Building> vFrom,Vertex<Building> vTo)
 	{
-		Graph<Building> g = new Graph<Building>();
+		//Edge <Building> e = new Edge<Building>(1,vFrom,vTo);
+		//Edge <Building> m = new Edge<Building>(3,vTo,vFrom);
+		//Graph<Building> g = new Graph<Building>();
 		ArrayList<Graph<Building>> gList = new ArrayList<Graph<Building>>();
 		gList = IOHandling.readGraph();
-		System.out.println(gList.size());
+		System.out.println("this is graph size"+gList.size());
 		for (Graph<Building> gs: gList)
 		{
-			gs.addVnE(vFrom, vTo, 3, 0);;
+			gs.getVertices().add(vTo);
+			gs.getVertices().add(vFrom);
+			gs.addVnE(vFrom, vTo, 12, 13);
+			//gs.getVertices().add(vFrom);
+			//List <Vertex<Building>> vList = gs.getVertices();
+//			for (Vertex<Building> v: vList)
+//			{
+//				int count =0;
+//			
+//				if(v.equals(vFrom))
+//				{
+//					
+//					gs.getVertices().add(v);
+//					
+//					gs.addVnE(vFrom, vTo, 3, 0);
+//					v.getEdges().add(e);
+//					v.getEdges().add(m);
+//					v.addEdge(e);
+//					v.addEdge(m);
+//					System.out.println(count+" this is v from");
+//					count++;
+//					
+//				}
+//				else if(v.equals(vTo))
+//				{
+//					gs.getVertices().add(v);
+//					v.getEdges().add(e);
+//					v.getEdges().add(m);
+//					v.addEdge(e);
+//					System.out.println(count+" this is v To");
+//					count++;
+//					v.addEdge(m);
+//				}
+//				else
+//				{
+//					System.out.println(count+" this is else");
+//					count++;
+//					
+//				}
+//			}
+			//gs.addVnE(vFrom, vTo, 3, 0);
+			//gs.getEdges().add(e);
 			IOHandling.writeGraph(gs);
 		}
 		//IOHandling.writeGraph(gList);
-		return g;
+		//return g;
 	}
 
+	/**
+	 * a layout for a the edge pane
+	 */
 	public void setupGUI()
 	{
 		button btn = new button();
@@ -234,6 +305,9 @@ public class EdgePane extends GridPane{
 		add(btnAddEdge,1,2,2,1);
 	}
 	
+	/**
+	 * load the table data
+	 */
 	@SuppressWarnings("unchecked")
 	public void tableLoad()
 	{
@@ -269,6 +343,9 @@ public class EdgePane extends GridPane{
 		table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 	}
 	
+	/**
+	 * construct a bar graph for edges
+	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void barGraph ()
 	{

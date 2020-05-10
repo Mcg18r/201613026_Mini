@@ -3,6 +3,11 @@ package Styles;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 
+/**
+ * Class to set styles for buttons
+ * @author 201613026
+ *
+ */
 public class button {
 	private String darkBlue ="-fx-background-color: \r\n"+
 			" #090a0c,linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),linear-gradient(#20262b, #191d22)," + 
@@ -29,11 +34,13 @@ public class button {
 			"-fx-padding: 10 20 10 20;\r\n"+
 			"hover:-fx-background-color= #101010;";
 	
-	public  button()
-	{
-		
-	}
-	
+	/**
+	 * function to set Button with message
+	 * @param btnType
+	 * @param btnName
+	 * @param btnMessage
+	 * @return
+	 */
 	public  Button btnSet (Button btnType, String btnName,String btnMessage)
 	{
 		btnType = new Button(btnName);
@@ -47,6 +54,13 @@ public class button {
 		
 		return btnType;
 	}
+	
+	/**
+	 * function to set Button
+	 * @param btnType
+	 * @param btnName
+	 * @return
+	 */
 	public  Button btnSet (Button btnType, String btnName)
 	{
 		btnType = new Button(btnName);
@@ -58,6 +72,11 @@ public class button {
 		
 		return btnType;
 	}
+	
+	/**
+	 * function to set Hover of Button when hover is off
+	 * @param btnType
+	 */
 	public void setHover(Button btnType)
 	{
 		
@@ -67,6 +86,11 @@ public class button {
 			btnType.setStyle(dHover);
 		});
 	}
+	
+	/**
+	 * function to set Button styles hover when on
+	 * @param btnType
+	 */
 	public void setHoverOff(Button btnType)
 		{		
 			btnType.setOnMouseExited(e->

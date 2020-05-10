@@ -7,8 +7,18 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 
+/**
+ * Background class
+ * @author 201613026
+ *
+ */
 public class backg {
 	
+	/**
+	 * function to set Background of navPane
+	 * @param url
+	 * @return
+	 */
 	public static Background setBackground(String url)
 	{
 		// new Image(url)

@@ -20,12 +20,18 @@ public class GraphPane extends GridPane{
 	private TableView<Graph<Building>> table = new TableView<Graph<Building>>();
 	private ObservableList<Graph<Building>> data;
 	
+	/**
+	 * Graphpane class
+	 */
 	public GraphPane() {
 		// TODO Auto-generated constructor stub() {
 		tableLoad();
 		setupGUI();
 	}
 	
+	/**
+	 * setup the GUI interface for the graph pane
+	 */
 	public void setupGUI()
 	{
 		ColumnConstraints column1 = new ColumnConstraints();
@@ -47,6 +53,9 @@ public class GraphPane extends GridPane{
 			add(table, 1, 0, 2, 1);
 		}
 	}
+	/**
+	 * load the table with data from graphs
+	 */
 	@SuppressWarnings("unchecked")
 	public void tableLoad()
 	{
