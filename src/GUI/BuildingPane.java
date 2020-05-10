@@ -34,7 +34,6 @@ public class BuildingPane extends GridPane{
 	private Button btnAddBuilding;
 	
 	//VARIABLES FOR BUILDING
-	private Boolean isSolarB;
 	private int xPos;
 	private int yPos;
 	private int power;
@@ -206,7 +205,7 @@ public class BuildingPane extends GridPane{
 	{
 		button btn = new button();
 		
-		btnAddBuilding = btn.btnSet(btnAddBuilding,"Add A Building","Adds a Buildings");
+		btnAddBuilding = btn.btnSet(btnAddBuilding,"Add A Building","Adds a Building to system");
 		ColumnConstraints column1 = new ColumnConstraints();
 	     column1.setPercentWidth(10);
 	     ColumnConstraints column2 = new ColumnConstraints();

@@ -74,7 +74,7 @@ public class EdgePane extends GridPane{
 			TextInputDialog input = new TextInputDialog();
 			tempChoice = 0;
 			input.setTitle("Building Choose");
-			input.setHeaderText("From File:\t 1\n Create New:\t 2");
+			input.setHeaderText("From File:\t 1\n Exit:\t 2");
 			input.setContentText("Option:");
 			input.showAndWait().ifPresent(f->{
 				try {
@@ -97,7 +97,7 @@ public class EdgePane extends GridPane{
 			}
 			else if(tempChoice==2)
 			{
-				addNewVertex(window);
+				window.close();
 				
 			}
 			else
@@ -108,15 +108,6 @@ public class EdgePane extends GridPane{
 			System.out.println(tempChoice);
 			
 		});
-	}
-	
-	/**
-	 * add a new vertex to file
-	 * @param window
-	 */
-	private void addNewVertex(Stage window) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	/**
@@ -161,7 +152,7 @@ public class EdgePane extends GridPane{
 		pane.setVgap(10);
 		pane.setPadding(new Insets(25,25,25,25));
 		
-		Text SceneTitle = new Text("Choose Building");
+		Text SceneTitle = new Text("Choose Vertex");
 		SceneTitle.setFont(Font.font("Tamoha", FontWeight.NORMAL, 20));
 		pane.add(SceneTitle, 0, 0, 2, 1);
 
@@ -172,7 +163,7 @@ public class EdgePane extends GridPane{
 	    window.setScene(scene);
 	    window.show();
 	    
-	    Button btnOk = new Button("Select Buildings");
+	    Button btnOk = new Button("Select Vertices");
 	    HBox HBtn = new HBox (10);
 	    HBtn.setAlignment(Pos.BOTTOM_RIGHT);
 	    HBtn.getChildren().add(btnOk);
@@ -214,9 +205,6 @@ public class EdgePane extends GridPane{
 	 */
 	public void AddEdgeToGraph(Vertex<Building> vFrom,Vertex<Building> vTo)
 	{
-		//Edge <Building> e = new Edge<Building>(1,vFrom,vTo);
-		//Edge <Building> m = new Edge<Building>(3,vTo,vFrom);
-		//Graph<Building> g = new Graph<Building>();
 		ArrayList<Graph<Building>> gList = new ArrayList<Graph<Building>>();
 		gList = IOHandling.readGraph();
 		System.out.println("this is graph size"+gList.size());
@@ -225,49 +213,8 @@ public class EdgePane extends GridPane{
 			gs.getVertices().add(vTo);
 			gs.getVertices().add(vFrom);
 			gs.addVnE(vFrom, vTo, 12, 13);
-			//gs.getVertices().add(vFrom);
-			//List <Vertex<Building>> vList = gs.getVertices();
-//			for (Vertex<Building> v: vList)
-//			{
-//				int count =0;
-//			
-//				if(v.equals(vFrom))
-//				{
-//					
-//					gs.getVertices().add(v);
-//					
-//					gs.addVnE(vFrom, vTo, 3, 0);
-//					v.getEdges().add(e);
-//					v.getEdges().add(m);
-//					v.addEdge(e);
-//					v.addEdge(m);
-//					System.out.println(count+" this is v from");
-//					count++;
-//					
-//				}
-//				else if(v.equals(vTo))
-//				{
-//					gs.getVertices().add(v);
-//					v.getEdges().add(e);
-//					v.getEdges().add(m);
-//					v.addEdge(e);
-//					System.out.println(count+" this is v To");
-//					count++;
-//					v.addEdge(m);
-//				}
-//				else
-//				{
-//					System.out.println(count+" this is else");
-//					count++;
-//					
-//				}
-//			}
-			//gs.addVnE(vFrom, vTo, 3, 0);
-			//gs.getEdges().add(e);
 			IOHandling.writeGraph(gs);
 		}
-		//IOHandling.writeGraph(gList);
-		//return g;
 	}
 
 	/**
@@ -277,8 +224,8 @@ public class EdgePane extends GridPane{
 	{
 		button btn = new button();
 		
-		btnbarGraph = btn.btnSet(btnbarGraph,"Line Chart","");
-		btnAddEdge = btn.btnSet(btnAddEdge,"Add Edge","");
+		btnbarGraph = btn.btnSet(btnbarGraph,"Bar Graph","view edge's in graph");
+		btnAddEdge = btn.btnSet(btnAddEdge,"Add Edge","Add edges to graph");
 		
 		setHgap(10);
 		setVgap(10);

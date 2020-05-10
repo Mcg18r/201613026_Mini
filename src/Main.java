@@ -60,31 +60,83 @@ public class Main extends Application
 		Graph<Building> g = new Graph<Building>();
 		/*--------------------CREATION OF BUILDINGS---------------------------------*/
 		SolarBuilding sb = new SolarBuilding ();
-		sb.setXPosition(600);
-		sb.setYPosition(0);
-		sb.setPowerGenerated(2);
-		sb.setName("39 Ferero Street");	
+		sb.setXPosition(750);
+		sb.setYPosition(750);
+		sb.setPowerGenerated(1500000);
+		sb.setName("ESKOM");	
 		IOHandling.writeBuilding(sb);
 		
 		SolarBuilding sb1 = new SolarBuilding ();
 		sb1.setXPosition(300);
 		sb1.setYPosition(100);
 		sb1.setPowerGenerated(intRandom(0, 2000));
-		sb1.setName("119 Kessel Street");
+		sb1.setName("Arnot Power Station");
 		IOHandling.writeBuildingToFile(sb1);
+		
+		SolarBuilding ps3 = new SolarBuilding ();
+		ps3.setXPosition(750);
+		ps3.setYPosition(1400);
+		ps3.setPowerGenerated(intRandom(0, 2000));
+		ps3.setName("Lethabo Power Station");
+		IOHandling.writeBuildingToFile(ps3);
+		
+		
+		StandardBuilding fs1 = new StandardBuilding ();
+		fs1.setXPosition(600);
+		fs1.setYPosition(1600);
+		fs1.setPowerUsed(intRandom(0, 2000));
+		fs1.setName("Harrismith");
+		IOHandling.writeBuildingToFile(fs1);
+		
+		StandardBuilding fs2 = new StandardBuilding ();
+		fs2.setXPosition(900);
+		fs2.setYPosition(1600);
+		fs2.setPowerUsed(intRandom(0, 2000));
+		fs2.setName("Bethlehem");
+		IOHandling.writeBuildingToFile(fs2);
+		
+		SolarBuilding ps4 = new SolarBuilding ();
+		ps4.setXPosition(1000);
+		ps4.setYPosition(1000);
+		ps4.setPowerGenerated(intRandom(0, 2000));
+		ps4.setName("Matimba Power Station");
+		IOHandling.writeBuildingToFile(ps4);
+		
+		
+		StandardBuilding l1 = new StandardBuilding ();
+		l1.setXPosition(1200);
+		l1.setYPosition(850);
+		l1.setPowerUsed(intRandom(0, 2000));
+		l1.setName("Mokopane");
+		IOHandling.writeBuildingToFile(l1);
+		
+		StandardBuilding l2 = new StandardBuilding ();
+		l2.setXPosition(1200);
+		l2.setYPosition(1150);
+		l2.setPowerUsed(intRandom(0, 2000));
+		l2.setName("Polokwane");
+		IOHandling.writeBuildingToFile(l2);
+		
 		
 		SolarBuilding sb2 = new SolarBuilding ();
 		sb2.setXPosition(900);
 		sb2.setYPosition(100);
 		sb2.setPowerGenerated(intRandom(0, 2000));
-		sb2.setName("UNICEF");	
+		sb2.setName("Kelvin Power Station");	
 		IOHandling.writeBuildingToFile(sb2);
 		
 		SolarBuilding sb3 = new SolarBuilding ();
 		sb3.setXPosition(150);
 		sb3.setYPosition(200);
 		sb3.setPowerGenerated(intRandom(0, 2000));
-		sb3.setName("134 Amber Street");
+		sb3.setName("Johannesburg");
+		IOHandling.writeBuildingToFile(sb3);
+		
+		SolarBuilding sb4 = new SolarBuilding ();
+		sb4.setXPosition(150);
+		sb4.setYPosition(200);
+		sb4.setPowerGenerated(1200);
+		sb4.setName("119 Kessel");
 		IOHandling.writeBuildingToFile(sb3);
 		
 		StandardBuilding st = new StandardBuilding();
@@ -108,33 +160,13 @@ public class Main extends Application
 		st2.setName("Standard Bank");
 		IOHandling.writeBuildingToFile(st2);
 		
-		StandardBuilding st3 = new StandardBuilding();
+		SolarBuilding st3 = new SolarBuilding();
 		st3.setXPosition(1200);
 		st3.setYPosition(300);
-		st3.setPowerUsed(intRandom(0, 2000));
+		st3.setPowerGenerated(1500);
 		st3.setName("Engen");
 		IOHandling.writeBuildingToFile(st3);
 		
-		StandardBuilding st4 = new StandardBuilding();
-		st4.setXPosition(1350);
-		st4.setYPosition(400);
-		st4.setPowerUsed(intRandom(0, 2000));
-		st4.setName("Alcatraz");
-		IOHandling.writeBuildingToFile(st4);
-		
-		StandardBuilding st5 = new StandardBuilding();
-		st5.setXPosition(150);
-		st5.setYPosition(500);
-		st5.setPowerUsed(intRandom(0, 2000));
-		st5.setName("Testing");
-		IOHandling.writeBuildingToFile(st5);
-		
-		SolarBuilding sb4 = new SolarBuilding ();
-		sb4.setXPosition(150);
-		sb4.setYPosition(700);
-		sb4.setPowerGenerated(160);
-		sb4.setName("addthroughVetrex");	
-		IOHandling.writeBuildingToFile(sb4);
 		/*------------------------------------------------------------------------*/
 		
 		/*--------------------CREATION OF VERTICES---------------------------------*/
@@ -162,94 +194,39 @@ public class Main extends Application
 		Vertex<Building> v7 = new Vertex<Building>(st3,intRandom(0, 2000));
 		g.getVertices().add(v7);
 		//IOHandling.writeVertexToFile(v2);					add the vertex to file after the edge creation else it adds without the edge
-		Vertex<Building> v8 = new Vertex<Building>(st4,intRandom(0, 2000));
-		g.getVertices().add(v8);
-		Vertex<Building> v9 = new Vertex<Building>(st5,intRandom(0, 2000));
-		g.getVertices().add(v9);
+		Vertex<Building> vp = new Vertex<Building>(ps3,intRandom(0, 2000));
+		g.getVertices().add(vp);
+		Vertex<Building> vf1 = new Vertex<Building>(fs1,intRandom(0, 2000));
+		g.getVertices().add(vf1);
+		Vertex<Building> vf2 = new Vertex<Building>(fs2,intRandom(0, 2000));
+		g.getVertices().add(vf2);
+		
+		Vertex<Building> vp1 = new Vertex<Building>(ps4,intRandom(0, 2000));
+		g.getVertices().add(vp1);
+		Vertex<Building> vl1 = new Vertex<Building>(l1,intRandom(0, 2000));
+		g.getVertices().add(vl1);
+		Vertex<Building> vl2 = new Vertex<Building>(l2,intRandom(0, 2000));
+		g.getVertices().add(vl2);
 		
 		g.addVnE(v0, v1, 3, 0);
 		g.addVnE(v0, v2, 2, 0);
-		g.addVnE(v3, v9, 2, 0);
+		g.addVnE(v0, vp, 300, 900);
+		g.addVnE(vp, vf1, 2, 0);
+		g.addVnE(vp, vf2, 3, 0);
+		
+		g.addVnE(v0, vp1, 0, 900);
+		g.addVnE(vp1, vl1, 2, 0);
+		g.addVnE(vp1, vl2, 3, 0);
 		g.addVnE(v1, v3, 2, 0);
 		g.addVnE(v1, v4, 3, 0);
 		g.addVnE(v2, v5, 3, 0);
 		g.addVnE(v2, v6, 2, 0);
 		g.addVnE(v6, v7, 3, 0);
-		g.addVnE(v7, v8, 2, 0);
+		//g.addVnE(v7, v8, 2, 0);
 		
 		IOHandling.writeGraph(g);
 		/*------------------------------------------------------------------------*/
-		
-		/*--------------------CREATION OF EDGES-----------------------------------*/
-//		Edge<Building> e1 = new Edge<Building>(60,v1,v2);
-//		IOHandling.writeEdge(e1);
-//		Edge<Building> e2 = new Edge<Building>(120,v2,v1);
-//		IOHandling.writeEdgeToFile(e2);
-//		Edge<Building> e3 = new Edge<Building>(320,v3,v2);
-//		IOHandling.writeEdgeToFile(e3);
-//		Edge<Building> e4 = new Edge<Building>(220,v4,v2);
-//		IOHandling.writeEdgeToFile(e4);
-		/*------------------------------------------------------------------------*/
-		
-		/*--------------------CREATING ARRAYLIST -----------------------------------*/
-//		ArrayList<Edge<Building>> eList = new ArrayList<Edge<Building>>();
-//		eList.add(e1);
-//		eList.add(e2);
-//		eList.add(e3);
-//		eList.add(e4);
-//		
-//		ArrayList<Vertex<Building>> vList = new ArrayList<Vertex<Building>>();
-//		vList.add(v1);
-//		vList.add(v2);
-//		vList.add(v3);
-//		vList.add(v4);
-		/*--------------------------------------------------------------------------*/
-	
-		/*--------------------CREATING GRAPH ---------------------------------------*/
-//		System.out.println("_________________________________________________");
-//		Graph<Building> graph = new Graph<Building> (vList, eList);
-//		System.out.println(graph.toString());
-//		System.out.println("_________________________________________________");
-		/*--------------------------------------------------------------------------*/
-		
-		/*--------------------CREATING GRAPH WITH IOHANDLING -----------------------*/
-//		
-//		IOHandling.writeVertex(v0);													//added the vertices to file after the edges had been done else it didn't add properly
-//		IOHandling.writeVertexToFile(v1);											//added the vertices to file after the edges had been done else it didn't add properly
-//		IOHandling.writeVertexToFile(v2);
-//		IOHandling.writeVertexToFile(v3);
-//		IOHandling.writeVertexToFile(v4);
-		
-//		ArrayList<Edge<Building>> eeList = IOHandling.readEdge();
-//		ArrayList<Vertex<Building>> vvList= IOHandling.readVertex();
-//		System.out.println("--------------------this is the edges from file -----------------------");
-//		System.out.println(eeList);
-//		System.out.println("-----------------------------------------------------------------------");
-//		System.out.println("--------------------this is the edges from system ---------------------");
-//		System.out.println(eList);
-//		System.out.println("-----------------------------------------------------------------------");
-//		System.out.println("--------------------this is the vertices from file --------------------");
-//		System.out.println(vvList);
-//		System.out.println("-----------------------------------------------------------------------");
-//		System.out.println("--------------------this is the vertices from system ------------------");
-//		System.out.println(vList);
-//		System.out.println("-----------------------------------------------------------------------");
-//		//ArrayList<Graph<Building>> graph = IOHandling.readGraph();
-//		Graph<Building> graph1 = new Graph<Building> (vList, eList);
-//		IOHandling.writeGraph(graph1);
-//		System.out.println("--------------------this is the graph from system ---------------------");
-//		System.out.println(graph1.toString());
-//		System.out.println("-----------------------------------------------------------------------");
-//		System.out.println("--------------------this is the graph from File -----------------------");
-//		System.out.println(g.toString());
-//		System.out.println("-----------------------------------------------------------------------");
-		/*--------------------------------------------------------------------------*/
-		
-		/*--------------------ADD INDIVIDUAL TO GRAPH ------------------------------*/
-		/*Graph <Building> b = new Graph <Building> ();
-		b.getVertices().add(v1);
-		System.out.println(b.getVertices().toString());*/
-		/*--------------------------------------------------------------------------*/
+
 		
 		
 	}

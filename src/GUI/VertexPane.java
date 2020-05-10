@@ -69,7 +69,7 @@ public class VertexPane extends GridPane{
 			
 			TextInputDialog input = new TextInputDialog();
 			tempChoice = 0;
-			input.setTitle("Building Choose");
+			input.setTitle("Choose Building");
 			input.setHeaderText("From File:\t 1\n Create New:\t 2");
 			input.setContentText("Option:");
 			input.showAndWait().ifPresent(f->{
@@ -219,7 +219,7 @@ public class VertexPane extends GridPane{
     HBtn.getChildren().add(btnOk);
     
     ChoiceBox<Building> choice = new ChoiceBox<Building>(dataBuildings);
-    pane.add(choice, 3, 0);
+    pane.add(choice, 3, 1);
 
     
     btnOk.setOnAction(i->{
