@@ -4,6 +4,7 @@ import Styles.backg;
 import Styles.button;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -39,7 +40,22 @@ public class NavPane extends GridPane
 	 */
 	public NavPane(Stage window) {	
 		this.window = window;
+		setMain();
 		setupGUI();
+	}
+
+	private void setMain() {
+		Label lbl = new Label("RATIONING \nLOAD SHEDDING");
+		gridBox.getChildren().add(lbl);
+		lbl.setMinWidth(600);
+		lbl.setMinHeight(600);
+		lbl.setStyle(	"-fx-font-size: 12px;\r\n" + 
+				"    -fx-font-size: 128px;\r\n" + 
+				"    -fx-font-weight: bold;\r\n" + 
+				"    -fx-text-fill: #333333;\r\n" + 
+				"    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );\r\n" 
+				);
+		
 	}
 
 	/**
@@ -52,6 +68,7 @@ public class NavPane extends GridPane
 			gridBox.getChildren().clear();
 			ViewPane movPane = new ViewPane ();
 			gridBox.getChildren().add(movPane);
+			setMain();
 		});
 		
 		btnGraph.setOnAction(e->{

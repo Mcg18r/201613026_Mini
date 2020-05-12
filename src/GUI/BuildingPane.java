@@ -48,6 +48,7 @@ public class BuildingPane extends GridPane{
 	 * the default load for pane
 	 */
 	public BuildingPane() {
+		IOHandling ih = new IOHandling();
 		tableLoad();
 		setupGUI();
 		
@@ -141,7 +142,7 @@ public class BuildingPane extends GridPane{
 						s.setPowerGenerated(power);
 						s.setName(name);
 						tableLoad();
-						IOHandling.writeBuildingToFile(s);
+						ih.writeBuildingToFile(s);
 						
 						
 					}catch (NumberFormatException ex) {
@@ -161,7 +162,7 @@ public class BuildingPane extends GridPane{
 						s.setPowerUsed(power);
 						s.setName(name);
 						tableLoad();
-						IOHandling.writeBuildingToFile(s);
+						ih.writeBuildingToFile(s);
 					}catch (NumberFormatException ex) {
 						Alert alert = new Alert(AlertType.ERROR, "Please enter valid  Integer");
 						alert.showAndWait();
@@ -237,9 +238,10 @@ public class BuildingPane extends GridPane{
 	@SuppressWarnings("unchecked")
 	public void tableLoad()
 	{
+		IOHandling ih = new IOHandling();
 
 		ArrayList<Building> building = new ArrayList<Building>();
-		building = IOHandling.readBuilding();
+		building = ih.readBuilding();
 		
 		for(Building b: building)
 			{

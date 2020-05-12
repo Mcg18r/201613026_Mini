@@ -1,8 +1,10 @@
 package Object;
 
+@SuppressWarnings("serial")
 public class StandardBuilding extends Building {
 	
 	private int powerUsed;
+	@SuppressWarnings("unused")
 	private String type = "SolarBuilding";
 	
 	public StandardBuilding(int powerUsed) {

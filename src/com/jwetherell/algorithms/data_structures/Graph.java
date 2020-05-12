@@ -17,7 +17,7 @@ import java.util.List;
  *      (Wikipedia)</a> <br>
  * @author Justin Wetherell <phishman3579@gmail.com>
  */
-@SuppressWarnings("unchecked")
+@SuppressWarnings({ "unchecked", "serial" })
 public class Graph<T extends Comparable<T>> implements Serializable {
 
 	private List<Vertex<T>> allVertices = new ArrayList<Vertex<T>>();

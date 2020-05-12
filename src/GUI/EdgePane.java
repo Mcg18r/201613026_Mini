@@ -9,8 +9,6 @@ import com.jwetherell.algorithms.data_structures.Graph.Vertex;
 import FileHandling.IOHandling;
 import FileHandling.StringHandling;
 import Object.Building;
-import Object.SolarBuilding;
-import Object.StandardBuilding;
 import Styles.backg;
 import Styles.button;
 import javafx.collections.FXCollections;
@@ -117,9 +115,10 @@ public class EdgePane extends GridPane{
 	 */
 	public void getVertex()
 	{
+		IOHandling i =new IOHandling();
 		List<Vertex<Building>>v = null;
 	
-		ArrayList<Graph<Building>> g = IOHandling.readGraph();
+		ArrayList<Graph<Building>> g = i.readGraph();
 		for(Graph<Building> gl:g)
 		{
 			v=gl.getVertices();
@@ -182,7 +181,7 @@ public class EdgePane extends GridPane{
 	    	vTo=ToChoice.getValue();
 	    	
 	    	
-	    	Edge <Building> e = new Edge<Building>(5, vFrom, vTo);
+	    	//Edge <Building> e = new Edge<Building>(5, vFrom, vTo);
 	    	//Edge <Building> f = new Edge<Building>(0,vTo, vFrom);
 	    	AddEdgeToGraph(vFrom, vTo);
 	    	//AddEdgeToGraph(f);
@@ -209,8 +208,9 @@ public class EdgePane extends GridPane{
 	 */
 	public void AddEdgeToGraph(Vertex<Building> vFrom,Vertex<Building> vTo)
 	{
+		IOHandling i =new IOHandling();
 		ArrayList<Graph<Building>> gList = new ArrayList<Graph<Building>>();
-		gList = IOHandling.readGraph();
+		gList = i.readGraph();
 		System.out.println("this is graph size"+gList.size());
 		for (Graph<Building> gs: gList)
 		{
@@ -262,10 +262,11 @@ public class EdgePane extends GridPane{
 	@SuppressWarnings("unchecked")
 	public void tableLoad()
 	{
+		IOHandling i =new IOHandling();
 		//ArrayList<Edge<Building>> eTest=new ArrayList<Edge<Building>>();
 		ArrayList<Graph<Building>> gTest=new ArrayList<Graph<Building>>();
 		
-		gTest = IOHandling.readGraph();
+		gTest = i.readGraph();
 		for(Graph<Building> g: gTest)
 		{
 			List<Edge<Building>> eL=g.getEdges();

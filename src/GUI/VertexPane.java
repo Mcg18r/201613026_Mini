@@ -144,10 +144,11 @@ public class VertexPane extends GridPane{
 	@SuppressWarnings("unchecked")
 	public void tableLoad()
 	{
+		IOHandling i =new IOHandling();
 
 		ArrayList<Vertex<Building>> vTest=new ArrayList<Vertex<Building>>();
 		ArrayList<Graph<Building>> gTest=new ArrayList<Graph<Building>>();
-		gTest = IOHandling.readGraph();
+		gTest = i.readGraph();
 		
 		for(Graph<Building> g: gTest)
 		{
@@ -182,8 +183,9 @@ public class VertexPane extends GridPane{
 	 */
 	public void getBuildings()
 	{
+		IOHandling ih = new IOHandling();
 		ArrayList<Building> building = new ArrayList<Building>();
-		building = IOHandling.readBuilding();
+		building = ih.readBuilding();
 		
 		for(Building b: building)
 			{
@@ -265,6 +267,7 @@ public class VertexPane extends GridPane{
 	 */
 	public void addNewBuilding(Stage window)
 	{
+		IOHandling ih = new IOHandling();
 		GridPane pane = new GridPane();
 		ColumnConstraints column1 = new ColumnConstraints();
 	    column1.setPercentWidth(10);
@@ -356,7 +359,7 @@ public class VertexPane extends GridPane{
 					Vertex<Building> v=buildingToVertex(s, power);
 					AddVertexToGraph(v);
 					tableLoad();
-					IOHandling.writeBuildingToFile(s);
+					ih.writeBuildingToFile(s);
 					
 					
 				}catch (NumberFormatException ex) {
@@ -377,7 +380,7 @@ public class VertexPane extends GridPane{
 					tableLoad();
 					Vertex<Building> v=buildingToVertex(s, power);
 					AddVertexToGraph(v);
-					IOHandling.writeBuildingToFile(s);
+					ih.writeBuildingToFile(s);
 					
 				}catch (NumberFormatException ex) {
 					Alert alert = new Alert(AlertType.ERROR, "Please enter valid  Integer");
@@ -435,9 +438,10 @@ public class VertexPane extends GridPane{
 	 */
 	public Graph<Building> AddVertexToGraph(Vertex<Building> vertex)
 	{
+		IOHandling i =new IOHandling();
 		Graph<Building> g = new Graph<Building>();
 		ArrayList<Graph<Building>> gList = new ArrayList<Graph<Building>>();
-		gList = IOHandling.readGraph();
+		gList = i.readGraph();
 		System.out.println(gList.size());
 		for (Graph<Building> gs: gList)
 		{

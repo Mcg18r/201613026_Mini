@@ -1,31 +1,15 @@
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.jwetherell.algorithms.data_structures.Graph;
-import com.jwetherell.algorithms.data_structures.Graph.Edge;
 import com.jwetherell.algorithms.data_structures.Graph.Vertex;
 
 import FileHandling.IOHandling;
 import GUI.NavPane;
-import GUI.ViewPane;
 import Object.Building;
 import Object.SolarBuilding;
 import Object.StandardBuilding;
-import Stack.Stack;
-import Stack.StackArr;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -57,6 +41,7 @@ public class Main extends Application
 
 	public void setUp ()
 	{ 
+		IOHandling i= new IOHandling();
 		Graph<Building> g = new Graph<Building>();
 		/*--------------------CREATION OF BUILDINGS---------------------------------*/
 		SolarBuilding sb = new SolarBuilding ();
@@ -64,21 +49,21 @@ public class Main extends Application
 		sb.setYPosition(750);
 		sb.setPowerGenerated(1500000);
 		sb.setName("ESKOM");	
-		IOHandling.writeBuilding(sb);
+		i.writeBuilding(sb);
 		
 		SolarBuilding sb1 = new SolarBuilding ();
 		sb1.setXPosition(300);
 		sb1.setYPosition(100);
 		sb1.setPowerGenerated(intRandom(0, 2000));
 		sb1.setName("Arnot Power Station");
-		IOHandling.writeBuildingToFile(sb1);
+		i.writeBuildingToFile(sb1);
 		
 		SolarBuilding ps3 = new SolarBuilding ();
 		ps3.setXPosition(750);
 		ps3.setYPosition(1400);
 		ps3.setPowerGenerated(intRandom(0, 2000));
 		ps3.setName("Lethabo Power Station");
-		IOHandling.writeBuildingToFile(ps3);
+		i.writeBuildingToFile(ps3);
 		
 		
 		StandardBuilding fs1 = new StandardBuilding ();
@@ -86,21 +71,21 @@ public class Main extends Application
 		fs1.setYPosition(1600);
 		fs1.setPowerUsed(intRandom(0, 2000));
 		fs1.setName("Harrismith");
-		IOHandling.writeBuildingToFile(fs1);
+		i.writeBuildingToFile(fs1);
 		
 		StandardBuilding fs2 = new StandardBuilding ();
 		fs2.setXPosition(900);
 		fs2.setYPosition(1600);
 		fs2.setPowerUsed(intRandom(0, 2000));
 		fs2.setName("Bethlehem");
-		IOHandling.writeBuildingToFile(fs2);
+		i.writeBuildingToFile(fs2);
 		
 		SolarBuilding ps4 = new SolarBuilding ();
 		ps4.setXPosition(1000);
 		ps4.setYPosition(1000);
 		ps4.setPowerGenerated(intRandom(0, 2000));
 		ps4.setName("Matimba Power Station");
-		IOHandling.writeBuildingToFile(ps4);
+		i.writeBuildingToFile(ps4);
 		
 		
 		StandardBuilding l1 = new StandardBuilding ();
@@ -108,14 +93,14 @@ public class Main extends Application
 		l1.setYPosition(850);
 		l1.setPowerUsed(intRandom(0, 2000));
 		l1.setName("Mokopane");
-		IOHandling.writeBuildingToFile(l1);
+		i.writeBuildingToFile(l1);
 		
 		StandardBuilding l2 = new StandardBuilding ();
 		l2.setXPosition(1200);
 		l2.setYPosition(1150);
 		l2.setPowerUsed(intRandom(0, 2000));
 		l2.setName("Polokwane");
-		IOHandling.writeBuildingToFile(l2);
+		i.writeBuildingToFile(l2);
 		
 		
 		SolarBuilding sb2 = new SolarBuilding ();
@@ -123,49 +108,49 @@ public class Main extends Application
 		sb2.setYPosition(100);
 		sb2.setPowerGenerated(intRandom(0, 2000));
 		sb2.setName("Kelvin Power Station");	
-		IOHandling.writeBuildingToFile(sb2);
+		i.writeBuildingToFile(sb2);
 		
 		SolarBuilding sb3 = new SolarBuilding ();
 		sb3.setXPosition(150);
 		sb3.setYPosition(200);
 		sb3.setPowerGenerated(intRandom(0, 2000));
 		sb3.setName("Johannesburg");
-		IOHandling.writeBuildingToFile(sb3);
+		i.writeBuildingToFile(sb3);
 		
 		SolarBuilding sb4 = new SolarBuilding ();
 		sb4.setXPosition(150);
 		sb4.setYPosition(200);
 		sb4.setPowerGenerated(1200);
 		sb4.setName("119 Kessel");
-		IOHandling.writeBuildingToFile(sb3);
+		i.writeBuildingToFile(sb3);
 		
 		StandardBuilding st = new StandardBuilding();
 		st.setXPosition(450);
 		st.setYPosition(200);
 		st.setPowerUsed(intRandom(0, 2000));
 		st.setName("FNB");
-		IOHandling.writeBuildingToFile(st);
+		i.writeBuildingToFile(st);
 		
 		StandardBuilding st1 = new StandardBuilding();
 		st1.setXPosition(750);
 		st1.setYPosition(200);
 		st1.setPowerUsed(intRandom(0, 2000));
 		st1.setName("ABSA");
-		IOHandling.writeBuildingToFile(st1);
+		i.writeBuildingToFile(st1);
 		
 		StandardBuilding st2 = new StandardBuilding();
 		st2.setXPosition(1050);
 		st2.setYPosition(200);
 		st2.setPowerUsed(intRandom(0, 2000));
 		st2.setName("Standard Bank");
-		IOHandling.writeBuildingToFile(st2);
+		i.writeBuildingToFile(st2);
 		
 		SolarBuilding st3 = new SolarBuilding();
 		st3.setXPosition(1200);
 		st3.setYPosition(300);
 		st3.setPowerGenerated(1500);
 		st3.setName("Engen");
-		IOHandling.writeBuildingToFile(st3);
+		i.writeBuildingToFile(st3);
 		
 		/*------------------------------------------------------------------------*/
 		

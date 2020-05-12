@@ -59,9 +59,9 @@ public class GraphPane extends GridPane{
 	@SuppressWarnings("unchecked")
 	public void tableLoad()
 	{
-
+		IOHandling i =new IOHandling();
 		ArrayList<Graph<Building>> gTest=new ArrayList<Graph<Building>>();
-		gTest = IOHandling.readGraph();
+		gTest = i.readGraph();
 		
 		for(Graph<Building> v: gTest)
 			{

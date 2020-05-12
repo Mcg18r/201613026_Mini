@@ -3,8 +3,6 @@ package Stack;
 import java.util.ArrayList;
 import java.util.EmptyStackException;
 
-import javafx.scene.Node;
-
 public class StackArr<T> implements Stack<T> {
 	private ArrayList<T> list = new ArrayList<>(); //an empty list
 	public StackArr() {

@@ -5,8 +5,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.file.Files;
 import java.util.ArrayList;
 
 import com.jwetherell.algorithms.data_structures.Graph;
@@ -14,6 +16,7 @@ import com.jwetherell.algorithms.data_structures.Graph.Edge;
 import com.jwetherell.algorithms.data_structures.Graph.Vertex;
 
 import Object.Building;
+import sun.reflect.ReflectionFactory.GetReflectionFactoryAction;
 
 /**
  * @author 201613026
@@ -21,19 +24,57 @@ import Object.Building;
  */
 public class IOHandling {
 
+	private File GetFileFromJar(String FilePath) {
+		File tempFile = new File(FilePath);
+		if (!tempFile.exists()) {
+			InputStream in = getClass().getResourceAsStream(FilePath);
+			tempFile = createFileFromStream(in, FilePath);
+			if (tempFile == null) {
+				System.err.println("The file is null");
+				return null;
+			} else {
+				System.out.println("The file exists");
+			}
+
+		}
+		return tempFile;
+	
+	}
+	
+	public File createFileFromStream(InputStream fileStream, String FilePath) {
+		File file = new File(FilePath);
+		try {
+			Files.copy(fileStream, file.toPath());
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return file;
+	}
 	/**
 	 * method that reads the building file and return an ArrayList of Buildings
 	 * @return
 	 */
 	@SuppressWarnings("null")
-	public static ArrayList<Building> readBuilding()
+	public ArrayList<Building> readBuilding()
 	{
 		ArrayList<Building> build = new ArrayList<Building>();
 		try
 		{
-			File f = new File("data/Building.dat");
+			File f = GetFileFromJar("data/Building.dat");
+			//File f = new File("data/Building.dat");
+			//InputStream is = this.getClass().getResourceAsStream( "data/Building.dat" );;
 			FileInputStream fis = new FileInputStream(f);
 			ObjectInputStream ois = new ObjectInputStream(fis);
+			//ObjectInputStream os = new ObjectInputStream(is);
+//			while(os!=null)
+//			{
+//				Building building = (Building) os.readObject();
+//				build.add(building);
+//				System.out.println(building);
+//			}
+//			os.close();
 			while(ois!=null)
 			{
 				Building building = (Building) ois.readObject();
@@ -64,11 +105,12 @@ public class IOHandling {
 		return build;
 	}
 	
+	
 	/**
 	 * Will write a building into a file by overwriting the file
 	 * @param building
 	 */
-	public static void writeBuilding(Building building)
+	public void writeBuilding(Building building)
 	{
 		try {
 			FileOutputStream fos = new FileOutputStream("data/Building.dat");
@@ -88,7 +130,7 @@ public class IOHandling {
 	 * Will write a building into a file by appending file
 	 * @param building
 	 */
-	public static void writeBuildingToFile(Building building)
+	public void writeBuildingToFile(Building building)
 	{
 		ArrayList<Building> build= readBuilding();
 		
@@ -109,7 +151,8 @@ public class IOHandling {
 		}
 		if(con!=false)
 		{
-			File f = new File("data/Building.dat");
+			File f = GetFileFromJar("data/Building.dat");
+			//File f = new File("data/Building.dat");
 			FileOutputStream fos;
 			ObjectOutputStream oos = null;
 			try {
@@ -390,12 +433,13 @@ public class IOHandling {
 	 * @return
 	 */
 	@SuppressWarnings("null")
-	public static ArrayList<Graph<Building>> readGraph() 
+	public ArrayList<Graph<Building>> readGraph() 
 	{
 		ArrayList<Graph<Building>> build = new ArrayList<Graph<Building>>();
 		try
 		{
-			File f = new File("data/Graph.dat");
+			File f = GetFileFromJar("data/Graph.dat");
+			//File f = new File("data/Graph.dat");
 			FileInputStream fis = new FileInputStream(f);
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			
@@ -455,7 +499,7 @@ public class IOHandling {
 	 * Will write a graph into a file by appending file
 	 * @param graph
 	 */
-	public static void writeGraphToFile(Graph<Building> graph) 
+	public  void writeGraphToFile(Graph<Building> graph) 
 	{
 		ArrayList<Graph<Building>> build= readGraph();
 		

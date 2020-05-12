@@ -1,5 +1,6 @@
 package Object;
 
+@SuppressWarnings("serial")
 public class SolarBuilding extends Building {
 	
 	private int powerGenerated;

@@ -51,6 +51,7 @@ public class Nodes<T extends Comparable<T>> {
 	 * @param root
 	 * @return
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Stack<T> nodeAlgorythm (Vertex<T> root)
 	{
 		boolean isContinue =true;

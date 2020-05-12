@@ -62,6 +62,7 @@ public class ViewPane extends GridPane{
 	
 	private double spX;
 	private double spY;
+	IOHandling i =new IOHandling();
 	
 	ArrayList<Graph<Building>> gList;						//gList used to store the graph
 	List<Vertex<Building>> vList;							//vList used to store the vertices
@@ -203,7 +204,7 @@ public class ViewPane extends GridPane{
 		/*-------------------------------------------------------------------------------*/
 		
 		/*--------------------READING DATA TO ARRAY LIST---------------------------------*/
-		gList = IOHandling.readGraph();								//read graph from file
+		gList = i.readGraph();								//read graph from file
 		for (Graph<Building> g: gList)								//loop through graph
 		{
 			vList=g.getVertices();									//add graph vertices to list
@@ -218,6 +219,7 @@ public class ViewPane extends GridPane{
 		sp.setContent(root);										//add root to scroll Pane first
 		
 		Scene scene = new Scene(sp,800,800);						//add scroll Pane to the scene
+		drawWindow.setMaximized(true);
 		drawWindow.setScene(scene);									//add scene to window
 		drawWindow.show();											//show window	
 		/*-------------------------------------------------------------------------------*/
@@ -394,7 +396,6 @@ public class ViewPane extends GridPane{
 			Group a = new Group ();
 			a = drawArrowEdge(e);
 			root.getChildren().add(a);
-			Background bg = backg.setBackground("file:src/Images/backgroundFile.jpg");
 			
 		}
 	}
@@ -437,6 +438,7 @@ public class ViewPane extends GridPane{
 	 */
 	public void addNewBuilding(Stage window)
 	{
+		IOHandling ih = new IOHandling();
 		GridPane pane = new GridPane();
 		ColumnConstraints column1 = new ColumnConstraints();
 	    column1.setPercentWidth(10);
@@ -530,7 +532,7 @@ public class ViewPane extends GridPane{
 					s.setName(name);
 					Vertex<Building> v=buildingToVertex(s, power);
 					AddVertexToGraph(v);
-					IOHandling.writeBuildingToFile(s);
+					ih.writeBuildingToFile(s);
 					
 					
 				}catch (NumberFormatException ex) {
@@ -550,7 +552,7 @@ public class ViewPane extends GridPane{
 					s.setName(name);
 					Vertex<Building> v=buildingToVertex(s, power);
 					AddVertexToGraph(v);
-					IOHandling.writeBuildingToFile(s);
+					ih.writeBuildingToFile(s);
 					
 				}catch (NumberFormatException ex) {
 					Alert alert = new Alert(AlertType.ERROR, "Please enter valid  Integer");
@@ -602,7 +604,7 @@ public class ViewPane extends GridPane{
 	{
 		Graph<Building> g = new Graph<Building>();
 		ArrayList<Graph<Building>> gList = new ArrayList<Graph<Building>>();
-		gList = IOHandling.readGraph();
+		gList = i.readGraph();
 		System.out.println(gList.size());
 		for (Graph<Building> gs: gList)
 		{
@@ -681,7 +683,7 @@ public class ViewPane extends GridPane{
 	public void AddEdgeToGraph(Vertex<Building> vFrom,Vertex<Building> vTo, int w, int wto)
 	{
 		ArrayList<Graph<Building>> gList = new ArrayList<Graph<Building>>();
-		gList = IOHandling.readGraph();
+		gList = i.readGraph();
 		System.out.println("this is graph size"+gList.size());
 		for (Graph<Building> gs: gList)
 		{
